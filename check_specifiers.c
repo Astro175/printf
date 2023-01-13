@@ -11,26 +11,27 @@ int (*check_specifier(const char *format))(va_list)
 {
 	int i;
 	func_t my_array[] = {
-		{"c", print_char},
-		{"s", print_str},
-		{"d", print_int},
-		{"u", print_unsigned},
+		{"c", print_c},
+		{"s", print_s},
+		{"i", print_d},
+		{"d", print_d},
+		{"u", print_u},
 		{"b", print_b},
-		{"o", print_octal},
-		{"x", print_hexa},
-		{"X", print_HexA},
-		{"p", print_pointer},
+		{"o", print_o},
+		{"x", print_x},
+		{"X", print_X},
+		{"p", print_p},
 		{"S", print_S},
 		{"r", print_r},
 		{"R", print_R},
 		{NULL, NULL}};
 
-	for (i = 0; my_array[i].t != NULL)
+	for (i = 0; my_array[i].t != NULL; i++)
 	{
 		if (*(my_array[i].t) == *format)
 		{
-			break;
+			return (my_array[i].f);
 		}
 	}
-	return (my_array[i].f);
+	return (NULL);
 }
