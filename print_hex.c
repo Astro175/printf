@@ -59,7 +59,7 @@ int print_x(va_list x)
 
 int print_X(va_list X)
 {
-	return (print_hex(va_arg(x, unsigned int), 1));
+	return (print_hex(va_arg(X, unsigned int), 1));
 }
 
 /**
@@ -84,18 +84,14 @@ int print_p(va_list p)
 			_putchar(str[i]);
 			count++;
 		}
-
 		return (count);
 	}
-
 	_putchar('0');
 	_putchar('x');
 	count = 2;
-
-	m = pow(16, 15);
-	a = n / m;
-
-	for (i = 0; i < 16; i++)
+	m = pow(16, 15); /* 16 ^ 15 */
+	a[0] = n / m;
+	for (i = 1; i < 16; i++)
 	{
 		m /= 16;
 		a[i] = (n / m) % 16;
@@ -106,9 +102,7 @@ int print_p(va_list p)
 		if (sum || i == 15)
 		{
 			if (a[i] < 10)
-			{
 				_putchar('0' + a[i]);
-			}
 			else
 				_putchar('0' + ('a' - ':') + a[i]);
 			count++;

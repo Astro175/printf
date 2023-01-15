@@ -21,7 +21,7 @@ int print_u(va_list u)
 		a[i] = (n / m) % 10;
 	}
 
-	for (i = 0, sum = 0, count = 0; i < 10)
+	for (i = 0, sum = 0, count = 0; i < 10; i++)
 	{
 		sum += a[i];
 		if (sum || i == 9)
