@@ -10,7 +10,6 @@ int print_d(va_list d)
 {
 	int a[10];
 	int j, n, count;
-	int m = 1000000;
 
 	n = va_arg(d, int);
 	count = 0;
