@@ -16,7 +16,7 @@ int print_d(va_list d)
 	count = 0;
 	m = 1000000000;
 
-	a[0] = m / n;
+	a[0] = n / m;
 
 	for (j = 0; j < 10; j++)
 	{
@@ -24,7 +24,7 @@ int print_d(va_list d)
 		a[j] = (n / m) % 10;
 	}
 
-	if (n > 0)
+	if (n < 0)
 	{
 		_putchar('-');
 		count++;
