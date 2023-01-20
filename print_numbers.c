@@ -8,9 +8,9 @@
 
 int print_d(va_list d)
 {
-	int a[10];
 	int j, n, count;
-
+	int *a;
+	int size = 0;
 	n = va_arg(d, int);
 	count = 0;
 
@@ -20,18 +20,20 @@ int print_d(va_list d)
 		count++;
 		n = -n;
 	}
-	for (j = 0; j < 10; j++)
+	for (j = n; j > 0; j = j / 10, size++);
+	a = malloc(size * sizeof(int));
+
+	for (j = 0; j < size; j++)
 	{
 		a[j] = n % 10;
 		n = n / 10;
-		if (n == 0 && j > 0)
-			break;
 	}
-	for (j = j - 1; j >= 0; j--)
+	for (j = size - 1; j >= 0; j--)
 	{
 		_putchar('0' + a[j]);
 		count++;
 	}
+	free(a);
 	return (count);
 }
 
