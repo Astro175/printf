@@ -8,10 +8,11 @@
 
 int print_d(va_list d)
 {
-	int j, n, count;
+	int j, count;
+	long long int n;
 	int *a;
 	int size = 0;
-	n = va_arg(d, int);
+	n = va_arg(d, long long int);
 	count = 0;
 
 	if (n == 0)
