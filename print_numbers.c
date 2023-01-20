@@ -14,6 +14,12 @@ int print_d(va_list d)
 	n = va_arg(d, int);
 	count = 0;
 
+	if (n == 0)
+	{
+		_putchar('0');
+		count++;
+		return count;
+	}
 	if (n < 0)
 	{
 		_putchar('-');
