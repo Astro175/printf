@@ -76,6 +76,8 @@ int print_b(va_list b)
 	unsigned int n;
 	signed int i;
 	bool digit_printed = false;
+	int expected_length = 22;
+	int count = 0;
 
 	n = va_arg(b, unsigned int);
 
@@ -85,16 +87,24 @@ int print_b(va_list b)
 		{
 			_putchar('1');
 			digit_printed = true;
+			count++;
 		}
 		else if (digit_printed)
 		{
 			_putchar('0');
+			count++;
 		}
 	}
 	if (!digit_printed)
 	{
 		_putchar('0');
+		count++;
 	}
-	return (32);
+	for (i = count; i < expected_length; i++)
+	{
+		_putchar('0');
+	}
+
+	return (expected_length);
 }
 
