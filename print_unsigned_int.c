@@ -73,8 +73,8 @@ int print_o(va_list o)
 
 int print_b(va_list b)
 {
-	unsigned int n, i;
-	int count;
+	unsigned int n;
+	signed int i;
 	bool digit_printed = false;
 
 	n = va_arg(b, unsigned int);
@@ -83,17 +83,17 @@ int print_b(va_list b)
 	{
 		if ((n >> i) & 1)
 		{
-			putchar('1');
+			_putchar('1');
 			digit_printed = true;
 		}
 		else if (digit_printed)
 		{
-			putchar('0');
+			_putchar('0');
 		}
 	}
 	if (!digit_printed)
 	{
-		putchar('0');
+		_putchar('0');
 	}
 	return (32);
 }

@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <math.h>
+#include <stdbool.h>
 int _printf(const char *format, ...);
 int (*check_specifier(const char *format))(va_list);
 int print_c(va_list c);
