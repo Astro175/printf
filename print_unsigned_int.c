@@ -73,27 +73,28 @@ int print_o(va_list o)
 
 int print_b(va_list b)
 {
-	unsigned int n, m, i, sum;
-	unsigned int a[32];
+	unsigned int n, i;
 	int count;
+	bool digit_printed = false;
 
 	n = va_arg(b, unsigned int);
-	m = 2147483648;
-	a[0] = n / m;
 
-	for (i = 7; i < 32; i++)
+	for (i = 31; i >= 0; i--)
 	{
-		m /= 2;
-		a[i] = (n / m) % 2;
-	}
-	for (i = 0, sum = 0, count = 0; i < 32; i++)
-	{
-		sum += a[i];
-		if (sum || i == 31)
+		if ((n >> i) & 1)
 		{
-			_putchar('0' + a[i]);
-			count++;
+			putchar('1');
+			digit_printed = true;
+		}
+		else if (digit_printed)
+		{
+			putchar('0');
 		}
 	}
-	return (count);
+	if (!digit_printed)
+	{
+		putchar('0');
+	}
+	return (32);
 }
+
