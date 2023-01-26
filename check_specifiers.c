@@ -13,7 +13,7 @@ int (*check_specifier(const char *format))(va_list)
 	func_t my_array[] = {
 		{"c", print_c},
 		{"s", print_s},
-		{"i", print_d},
+		{"i", print_i},
 		{"d", print_d},
 		{"u", print_u},
 		{"b", print_b},
