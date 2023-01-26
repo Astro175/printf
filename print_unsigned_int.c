@@ -73,38 +73,28 @@ int print_o(va_list o)
 
 int print_b(va_list b)
 {
-	unsigned int n;
-	signed int i;
-	bool digit_printed = false;
-	int expected_length = 22;
+	int flag = 0;
 	int count = 0;
+	int i, a = 1, c;
+	unsigned int num = va_arg(b, unsigned int);
+	unsigned int p;
 
-	n = va_arg(b, unsigned int);
-
-	for (i = 31; i >= 0; i--)
+	for (i = 0; i < 32; i++)
 	{
-		if ((n >> i) & 1)
+		p = ((a << (31 - i)) & num);
+		if ((p >> 32 - i))
+			flag = 1;
+		if (flag)
 		{
-			_putchar('1');
-			digit_printed = true;
-			count++;
-		}
-		else if (digit_printed)
-		{
-			_putchar('0');
+			c = p >> (31 - i);
+			_putchar(c + '0');
 			count++;
 		}
 	}
-	if (!digit_printed)
+	if(count == 0)
 	{
-		_putchar('0');
 		count++;
-	}
-	for (i = count; i < expected_length; i++)
-	{
 		_putchar('0');
 	}
-
-	return (expected_length);
+	return (count);
 }
-
