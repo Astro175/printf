@@ -82,7 +82,7 @@ int print_b(va_list b)
 	for (i = 0; i < 32; i++)
 	{
 		p = ((a << (31 - i)) & num);
-		if ((p >> 32 - i))
+		if (p >> (32 - i))
 			flag = 1;
 		if (flag)
 		{
