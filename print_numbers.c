@@ -8,38 +8,39 @@
 
 int print_d(va_list d)
 {
-	int j, count, n;
-	int *a;
-	int size = 0;
-	n = va_arg(d, int);
-	count = 0;
+	int n = va_arg(d, int);
+	int num, last = n % 10, digit, exp = 1;
+	int i = 1;
 
-	if (n == 0)
-	{
-		_putchar('0');
-		count++;
-		return count;
-	}
-	if (n < 0)
+	n = n / 10;
+	num = n;
+
+	if (last < 10)
 	{
 		_putchar('-');
-		count++;
+		num = -num;
 		n = -n;
+		last = -last;
+		i++;
 	}
-	for (j = n; j > 0; j = j / 10, size++);
-	a = malloc(size * sizeof(int));
 
-	for (j = 0; j < size; j++)
+	if (num > 0)
 	{
-		a[j] = n % 10;
-		n = n / 10;
+		while (num / 10 != 0)
+		{
+			exp = exp * 10;
+			num = num / 10;
+		}
+		num = n;
+		while (exp > 0)
+		{
+			digit = num / exp;
+			_putchar(digit + '0');
+			num = num - (digit * exp);
+			exp = exp / 10;
+			i++;
+		}
 	}
-	for (j = size - 1; j >= 0; j--)
-	{
-		_putchar('0' + a[j]);
-		count++;
-	}
-	free(a);
-	return (count);
+	_putchar(last + '0');
+	return (i);
 }
-
