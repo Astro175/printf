@@ -64,37 +64,3 @@ int print_o(va_list o)
 	}
 	return (count);
 }
-
-/**
- * print_b - takes an unsigned int and prints it in binary notation
- * @b: unsigned int to print
- * Return: number of digits printed
- */
-
-int print_b(va_list b)
-{
-	int flag = 0;
-	int count = 0;
-	int i, a = 1, c;
-	unsigned int num = va_arg(b, unsigned int);
-	unsigned int p;
-
-	for (i = 0; i < 32; i++)
-	{
-		p = ((a << (31 - i)) & num);
-		if (p >> (32 - i))
-			flag = 1;
-		if (flag)
-		{
-			c = p >> (31 - i);
-			_putchar(c + '0');
-			count++;
-		}
-	}
-	if(count == 0)
-	{
-		count++;
-		_putchar('0');
-	}
-	return (count);
-}
